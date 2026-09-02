@@ -1,90 +1,60 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Magie — Grimoire vivant</title>
-  <style>
-    :root{--bg:#f6f0df;--ink:#2b251f;--paper:#fffaf0;--line:#d8c9aa;--shadow:0 10px 30px rgba(62,47,30,.10)}
-    *{box-sizing:border-box}body{margin:0;font-family:Georgia,'Times New Roman',serif;background:linear-gradient(180deg,#efe4c9 0,#f8f3e7 35%,#f4eddd 100%);color:var(--ink)}
-    .hero{max-width:980px;margin:0 auto;padding:56px 20px 28px;text-align:center}.eyebrow{letter-spacing:.22em;font-size:.78rem;font-weight:700}
-    .hero h1{font-size:clamp(2.2rem,6vw,4.5rem);line-height:.95;margin:.3rem 0 1rem}.hero>p:not(.eyebrow){max-width:680px;margin:0 auto 24px;font-size:1.08rem;line-height:1.6}
-    .hero input{width:min(100%,650px);padding:16px 18px;border:1px solid var(--line);border-radius:16px;background:rgba(255,250,240,.9);font:inherit;box-shadow:var(--shadow)}
-    main{max-width:1080px;margin:0 auto;padding:12px 20px 60px}.categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0 34px}
-    .category{border:1px solid var(--line);background:var(--paper);border-radius:18px;padding:18px 12px;cursor:pointer;font:inherit;min-height:92px;box-shadow:var(--shadow);transition:.15s transform,.15s background}
-    .category:hover,.category.active{transform:translateY(-2px);background:#fff}.category .icon{display:block;font-size:1.6rem;margin-bottom:7px}
-    .section-title{display:flex;align-items:center;justify-content:space-between;gap:12px}.section-title h2{font-size:1.8rem}.ghost{border:1px solid var(--line);background:transparent;border-radius:999px;padding:9px 14px;cursor:pointer}
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}.card{background:rgba(255,250,240,.92);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow)}
-    .card h3{margin:.25rem 0 .7rem;font-size:1.25rem}.card p{line-height:1.55}.tag{display:inline-block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:5px 8px}.note{font-style:italic;opacity:.78}
-    footer{text-align:center;padding:26px 20px 40px;opacity:.7;font-size:.9rem}@media(max-width:600px){.hero{padding-top:38px}.categories{grid-template-columns:repeat(2,1fr)}.section-title{align-items:flex-end}.cards{grid-template-columns:1fr}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Magie — Grimoire vivant</title>
+<style>
+:root{--bg:#f6f0df;--ink:#2b251f;--paper:#fffaf0;--line:#d8c9aa;--accent:#6f5b37;--shadow:0 10px 30px rgba(62,47,30,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Georgia,'Times New Roman',serif;background:linear-gradient(180deg,#efe4c9 0,#f8f3e7 35%,#f4eddd 100%);color:var(--ink)}
+.hero{max-width:980px;margin:auto;padding:52px 20px 28px;text-align:center}.eyebrow{letter-spacing:.22em;font-size:.78rem;font-weight:700}.hero h1{font-size:clamp(2.2rem,6vw,4.5rem);line-height:.95;margin:.3rem 0 1rem}.hero>p:not(.eyebrow){max-width:700px;margin:0 auto 22px;font-size:1.08rem;line-height:1.6}.hero input{width:min(100%,650px);padding:16px 18px;border:1px solid var(--line);border-radius:16px;background:rgba(255,250,240,.96);font:inherit;box-shadow:var(--shadow)}
+main{max-width:1080px;margin:auto;padding:12px 20px 60px}.categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0 34px}.category{border:1px solid var(--line);background:var(--paper);border-radius:18px;padding:18px 12px;cursor:pointer;font:inherit;min-height:92px;box-shadow:var(--shadow);transition:.15s transform,.15s background,.15s border-color}.category:hover{transform:translateY(-2px)}.category.active{background:#f0e2bd;border:2px solid var(--accent);transform:translateY(-2px)}.category .icon{display:block;font-size:1.6rem;margin-bottom:7px}.category .small{display:block;font-size:.75rem;opacity:.65;margin-top:5px}
+.section-title{display:flex;align-items:center;justify-content:space-between;gap:12px}.section-title h2{font-size:1.8rem;margin-bottom:8px}.status{margin:0 0 18px;opacity:.72}.ghost{border:1px solid var(--line);background:transparent;border-radius:999px;padding:9px 14px;cursor:pointer;font:inherit}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px}.card{background:rgba(255,250,240,.94);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow);cursor:pointer;transition:.15s transform,.15s border-color}.card:hover{transform:translateY(-2px);border-color:#b9a070}.card h3{margin:.35rem 0 .7rem;font-size:1.25rem}.card p{line-height:1.55}.tag{display:inline-block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:5px 8px}.note{font-style:italic;opacity:.78}.details{display:none;border-top:1px dashed var(--line);margin-top:14px;padding-top:12px}.card.open .details{display:block}.openhint{font-size:.82rem;opacity:.62;margin-top:12px}.card.open .openhint{display:none}.pulse{animation:pulse .35s ease}@keyframes pulse{50%{transform:scale(.99)}}footer{text-align:center;padding:26px 20px 40px;opacity:.7;font-size:.9rem}@media(max-width:600px){.hero{padding-top:36px}.categories{grid-template-columns:repeat(2,1fr)}.section-title{align-items:flex-end}.cards{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-  <header class="hero">
-    <p class="eyebrow">GRIMOIRE VIVANT</p>
-    <h1>Magie de l’âme qui agit</h1>
-    <p>Un espace simple pour retrouver les leçons, paroles, êtres, lieux, éléments et idées du livre.</p>
-    <input id="search" type="search" placeholder="Chercher : bonjour, arbre, bénédiction…" />
-  </header>
-
-  <main>
-    <section id="categories" class="categories" aria-label="Catégories"></section>
-    <section>
-      <div class="section-title">
-        <h2>Fiches</h2>
-        <button id="showAll" class="ghost">Tout afficher</button>
-      </div>
-      <div id="cards" class="cards"></div>
-    </section>
-  </main>
-
-  <footer>Première version du laboratoire du grimoire — les contenus pourront être enrichis sans perdre les idées déjà classées.</footer>
-
-  <script>
-    const categories=[
-      ['lecons','📖','Leçons'],['paroles','✨','Paroles'],['gestes','👐','Gestes'],['espaces','🚪','Lieux & seuils'],['visible','🌿','Êtres visibles'],['invisible','🌙','Êtres invisibles'],['elements','🔥','Éléments'],['alchimie','💠','Alchimie intérieure'],['contes','🗺️','Contes'],['sources','🧭','Sources & idées']
-    ];
-    const entries=[
-      {cat:'lecons',title:'Se faire des amis',text:'Première leçon du grimoire : avant de vouloir agir sur le monde, apprendre à reconnaître les êtres et à entrer en relation avec eux.',note:'Noyau fondateur du livre.'},
-      {cat:'paroles',title:'Bonjour',text:'Dire bonjour comme un acte de reconnaissance : je vois qu’une présence est là.',note:'Première parole magique.'},
-      {cat:'paroles',title:'Merci',text:'Recevoir consciemment ce qui est donné et faire de la gratitude une force quotidienne.'},
-      {cat:'paroles',title:'Je t’aime',text:'Parole d’ouverture du cœur : souhaiter du bien sans chercher à posséder.'},
-      {cat:'paroles',title:'Je t’en prie',text:'Demander sans contraindre, en respectant l’autre et ses frontières.'},
-      {cat:'gestes',title:'Bénir en silence',text:'Souhaiter du bien à un être ou à un lieu, même s’il ne sait pas qu’on le fait.',note:'Un des grands axes du grimoire.'},
-      {cat:'espaces',title:'Entrer dans un lieu',text:'Avant d’entrer, observer le seuil, l’atmosphère, les limites et les habitants. Apprendre à ne pas traverser un espace comme s’il était vide.'},
-      {cat:'espaces',title:'Devenir une maison',text:'Apprendre à devenir intérieurement un espace accueillant, stable et vivant dans lequel les autres peuvent respirer.'},
-      {cat:'visible',title:'Cercle des amis visibles',text:'Humains, animaux, arbres, plantes, pierres, montagnes, rivières et lieux peuvent devenir des compagnons d’observation et de relation.'},
-      {cat:'invisible',title:'Cercle des amis invisibles',text:'Catégorie de recherche pour les êtres et présences du monde invisible dans l’univers fantasy du livre.',note:'À distinguer clairement entre sources spirituelles, symboles et fiction.'},
-      {cat:'elements',title:'Les quatre éléments',text:'Terre, eau, air et feu comme grandes portes d’expérience, d’observation et d’imaginaire.'},
-      {cat:'alchimie',title:'Pensée → sentiment → parole → action',text:'Suivre comment une impulsion intérieure devient une manière de regarder, de parler puis d’agir.'},
-      {cat:'contes',title:'Le héros et l’objet magique',text:'Idée de récit : un objet merveilleux reste inerte tant que le héros n’a pas appris la reconnaissance, la gratitude et le respect.'},
-      {cat:'sources',title:'Matière à classer',text:'Notes Drive, conférences, rituels, exercices, contes, citations de travail et pistes de dessins restent conservés ici avant adaptation.'}
-    ];
-    const categoryEl=document.querySelector('#categories');
-    const cardsEl=document.querySelector('#cards');
-    const searchEl=document.querySelector('#search');
-    const showAll=document.querySelector('#showAll');
-    let active='all';
-    categories.forEach(([id,icon,label])=>{
-      const b=document.createElement('button');
-      b.className='category'; b.dataset.cat=id; b.innerHTML=`<span class="icon">${icon}</span>${label}`;
-      b.onclick=()=>{active=id;document.querySelectorAll('.category').forEach(x=>x.classList.toggle('active',x===b));render();};
-      categoryEl.appendChild(b);
-    });
-    function render(){
-      const q=searchEl.value.trim().toLowerCase();
-      const filtered=entries.filter(e=>(active==='all'||e.cat===active)&&(`${e.title} ${e.text} ${e.note||''}`.toLowerCase().includes(q)));
-      cardsEl.innerHTML=filtered.length?'':'<article class="card"><h3>Aucune fiche trouvée</h3><p>Essaie un autre mot ou affiche toutes les catégories.</p></article>';
-      filtered.forEach(e=>{
-        const label=categories.find(c=>c[0]===e.cat)?.[2]||e.cat;
-        const card=document.createElement('article'); card.className='card';
-        card.innerHTML=`<span class="tag">${label}</span><h3>${e.title}</h3><p>${e.text}</p>${e.note?`<p class="note">${e.note}</p>`:''}`;
-        cardsEl.appendChild(card);
-      });
-    }
-    searchEl.addEventListener('input',render);
-    showAll.onclick=()=>{active='all';document.querySelectorAll('.category').forEach(x=>x.classList.remove('active'));render();};
-    render();
-  </script>
+<header class="hero">
+<p class="eyebrow">GRIMOIRE VIVANT</p>
+<h1>Magie de l’âme qui agit</h1>
+<p>Choisis une porte du grimoire. Les fiches correspondantes apparaîtront juste en dessous. Tu peux ensuite toucher une fiche pour l’ouvrir.</p>
+<input id="search" type="search" placeholder="Chercher : bonjour, arbre, bénédiction…" autocomplete="off">
+</header>
+<main>
+<section id="categories" class="categories" aria-label="Catégories"></section>
+<section id="results">
+<div class="section-title"><h2 id="sectionHeading">Toutes les fiches</h2><button id="showAll" class="ghost" type="button">Tout afficher</button></div>
+<p id="status" class="status"></p>
+<div id="cards" class="cards"></div>
+</section>
+</main>
+<footer>Laboratoire du grimoire — les contenus pourront être enrichis sans perdre les idées déjà classées.</footer>
+<script>
+(function(){
+const categories=[['lecons','📖','Leçons'],['paroles','✨','Paroles'],['gestes','👐','Gestes'],['espaces','🚪','Lieux & seuils'],['visible','🌿','Êtres visibles'],['invisible','🌙','Êtres invisibles'],['elements','🔥','Éléments'],['alchimie','💠','Alchimie intérieure'],['contes','🗺️','Contes'],['sources','🧭','Sources & idées']];
+const entries=[
+{cat:'lecons',title:'Se faire des amis',text:'Première leçon du grimoire : avant de vouloir agir sur le monde, apprendre à reconnaître les êtres et à entrer en relation avec eux.',note:'Noyau fondateur du livre.',more:'Commencer par saluer, observer, remercier et apprendre à connaître avant de demander quoi que ce soit.'},
+{cat:'paroles',title:'Bonjour',text:'Dire bonjour comme un acte de reconnaissance : je vois qu’une présence est là.',note:'Première parole magique.',more:'À explorer avec les humains, les animaux, les arbres, un lieu ou un nouveau jour.'},
+{cat:'paroles',title:'Merci',text:'Recevoir consciemment ce qui est donné et faire de la gratitude une force quotidienne.',more:'Exercice possible : choisir trois choses très simples à remercier chaque matin.'},
+{cat:'paroles',title:'Je t’aime',text:'Parole d’ouverture du cœur : souhaiter du bien sans chercher à posséder.',more:'Dans le grimoire, l’amour peut devenir une qualité de présence plutôt qu’une formule de pouvoir.'},
+{cat:'paroles',title:'Je t’en prie',text:'Demander sans contraindre, en respectant l’autre et ses frontières.',more:'Cette parole ouvre le thème du consentement, des seuils et du respect des espaces.'},
+{cat:'gestes',title:'Bénir en silence',text:'Souhaiter du bien à un être ou à un lieu, même s’il ne sait pas qu’on le fait.',note:'Un des grands axes du grimoire.',more:'La bénédiction n’exige ni récompense ni possession : elle consiste d’abord à souhaiter le bien.'},
+{cat:'espaces',title:'Entrer dans un lieu',text:'Avant d’entrer, observer le seuil, l’atmosphère, les limites et les habitants. Apprendre à ne pas traverser un espace comme s’il était vide.',more:'On pourra en faire une leçon entière sur les portes, les frontières et la manière de demander intérieurement la permission.'},
+{cat:'espaces',title:'Devenir une maison',text:'Apprendre à devenir intérieurement un espace accueillant, stable et vivant dans lequel les autres peuvent respirer.',more:'Idée centrale : avant de construire un espace magique autour de soi, devenir soi-même un espace habitable.'},
+{cat:'visible',title:'Cercle des amis visibles',text:'Humains, animaux, arbres, plantes, pierres, montagnes, rivières et lieux peuvent devenir des compagnons d’observation et de relation.',more:'Chaque règne pourra avoir ses signes, exercices, histoires et pages de dessin.'},
+{cat:'invisible',title:'Cercle des amis invisibles',text:'Catégorie de recherche pour les êtres et présences du monde invisible dans l’univers fantasy du livre.',note:'À distinguer clairement entre sources spirituelles, symboles et fiction.',more:'Cette partie servira de bestiaire et de carte d’univers, avec une indication claire de la provenance de chaque figure.'},
+{cat:'elements',title:'Les quatre éléments',text:'Terre, eau, air et feu comme grandes portes d’expérience, d’observation et d’imaginaire.',more:'Chaque élément pourra réunir sensations, qualités, lieux, créatures, gestes et aventures.'},
+{cat:'alchimie',title:'Pensée → sentiment → parole → action',text:'Suivre comment une impulsion intérieure devient une manière de regarder, de parler puis d’agir.',more:'Une piste pour montrer que la magie du grimoire commence dans la transformation de la vie intérieure.'},
+{cat:'contes',title:'Le héros et l’objet magique',text:'Idée de récit : un objet merveilleux reste inerte tant que le héros n’a pas appris la reconnaissance, la gratitude et le respect.',more:'L’objet devient alors un révélateur : il ne donne pas la magie, il répond à une qualité que le héros a développée.'},
+{cat:'sources',title:'Matière à classer',text:'Notes Drive, conférences, rituels, exercices, contes, citations de travail et pistes de dessins restent conservés ici avant adaptation.',more:'Cette zone gardera la matière brute afin qu’aucune idée ne soit perdue pendant l’écriture.'}
+];
+const categoryEl=document.getElementById('categories'),cardsEl=document.getElementById('cards'),searchEl=document.getElementById('search'),showAll=document.getElementById('showAll'),heading=document.getElementById('sectionHeading'),status=document.getElementById('status'),results=document.getElementById('results');
+let active='all';
+function labelFor(id){const c=categories.find(function(x){return x[0]===id});return c?c[2]:id}
+function selectCategory(id,button){active=id;document.querySelectorAll('.category').forEach(function(x){x.classList.toggle('active',x===button)});render();results.classList.remove('pulse');void results.offsetWidth;results.classList.add('pulse');setTimeout(function(){results.scrollIntoView({behavior:'smooth',block:'start'})},60)}
+categories.forEach(function(c){const b=document.createElement('button');b.type='button';b.className='category';b.setAttribute('aria-pressed','false');b.innerHTML='<span class="icon">'+c[1]+'</span>'+c[2]+'<span class="small">ouvrir</span>';b.addEventListener('click',function(){document.querySelectorAll('.category').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');selectCategory(c[0],b)});categoryEl.appendChild(b)});
+function render(){const q=searchEl.value.trim().toLowerCase();const filtered=entries.filter(function(e){return(active==='all'||e.cat===active)&&((e.title+' '+e.text+' '+(e.note||'')+' '+(e.more||'')).toLowerCase().indexOf(q)!==-1)});heading.textContent=active==='all'?'Toutes les fiches':labelFor(active);status.textContent=filtered.length+' fiche'+(filtered.length>1?'s':'')+' affichée'+(filtered.length>1?'s':'')+(q?' pour « '+searchEl.value.trim()+' »':'');cardsEl.innerHTML='';if(!filtered.length){cardsEl.innerHTML='<article class="card"><h3>Aucune fiche trouvée</h3><p>Essaie un autre mot ou affiche toutes les catégories.</p></article>';return}filtered.forEach(function(e){const card=document.createElement('article');card.className='card';card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-expanded','false');card.innerHTML='<span class="tag">'+labelFor(e.cat)+'</span><h3>'+e.title+'</h3><p>'+e.text+'</p>'+(e.note?'<p class="note">'+e.note+'</p>':'')+'<p class="openhint">Toucher pour ouvrir ↓</p><div class="details"><strong>À développer dans le livre</strong><p>'+e.more+'</p></div>';function toggle(){const open=card.classList.toggle('open');card.setAttribute('aria-expanded',open?'true':'false')}card.addEventListener('click',toggle);card.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();toggle()}});cardsEl.appendChild(card)})}
+searchEl.addEventListener('input',render);showAll.addEventListener('click',function(){active='all';document.querySelectorAll('.category').forEach(function(x){x.classList.remove('active');x.setAttribute('aria-pressed','false')});render()});render();
+})();
+</script>
 </body>
 </html>
