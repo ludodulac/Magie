@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Magie — Grimoire vivant</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <p class="eyebrow">GRIMOIRE VIVANT</p>
+    <h1>Magie de l’âme qui agit</h1>
+    <p>Un espace simple pour retrouver les leçons, paroles, êtres, lieux, éléments et idées du livre.</p>
+    <input id="search" type="search" placeholder="Chercher : bonjour, arbre, bénédiction…" />
+  </header>
+
+  <main>
+    <section id="categories" class="categories" aria-label="Catégories"></section>
+    <section>
+      <div class="section-title">
+        <h2>Fiches</h2>
+        <button id="showAll" class="ghost">Tout afficher</button>
+      </div>
+      <div id="cards" class="cards"></div>
+    </section>
+  </main>
+
+  <footer>Première version du laboratoire du grimoire — les contenus pourront être enrichis sans perdre les idées déjà classées.</footer>
+  <script src="app.js"></script>
+</body>
+</html>
